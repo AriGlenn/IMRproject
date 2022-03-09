@@ -20,3 +20,6 @@ https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/YGIVCD
 
 IMR Data:
 http://ghdx.healthdata.org/record/ihme-data/lmic-under5-mortality-rate-geospatial-estimates-2000-2017
+
+
+Follow (https://github.com/susanathey/MCPanel) to install MCPanel

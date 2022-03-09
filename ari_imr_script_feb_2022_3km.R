@@ -18,6 +18,13 @@ library(MCPanel) #matrix completion
 #library(rgdal)
 #library(lfe)
 
+#communties from all over Uganda - anonimize communities by jittering them by 5km in radius
+#means village could appear up to 5km radius away from electric grid line
+#2km buffer, anything within 2km is included
+#3km buffer - #X control villages, #Y treatment villages
+#X and Y values will differ between 2km, 3km, and 4km
+#
+#4km buffer - 
 
 # loading treatment and control data
 TC_3km <- read.csv("treat_control_3km.csv") #csv is in the drive
@@ -28,7 +35,7 @@ TC_3km_2014sub <- subset(TC_3km, year == "2014")
 
 #creates a matrix with 964 rows, 1 col, filled w/NA
 #number of rows = length of data = number of villages
-numVillages <- 964 #825
+numVillages <- 825 #964 #825
 count <- matrix(NA,numVillages,1)
 #labels each row from 1 to 964
 count[,1] <- c(1:numVillages)
