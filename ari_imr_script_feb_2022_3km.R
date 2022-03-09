@@ -29,18 +29,19 @@ library(MCPanel) #matrix completion
 # loading treatment and control data
 TC_3km <- read.csv("treat_control_3km.csv") #csv is in the drive
 
-#takes data from all rows w/2014 as a data value under year by View(TC_2km)
+#takes data from all rows w/2014 as a data value under year by View(TC_3km)
 #964 total = 888 control and 76 treated
+
 TC_3km_2014sub <- subset(TC_3km, year == "2014")
 
 #creates a matrix with 964 rows, 1 col, filled w/NA
 #number of rows = length of data = number of villages
-numVillages <- 825 #964 #825
+numVillages <- 825
 count <- matrix(NA,numVillages,1)
-#labels each row from 1 to 964
+#labels each row from 1 to 825
 count[,1] <- c(1:numVillages)
 
-#assigns each row in the data set of the 2014 subset with a unqiue identifies (1-964)
+#assigns each row in the data set of the 2014 subset with a unqiue identifies (1-825)
 TC_3km_2014sub_count <- cbind(count,TC_3km_2014sub)
 
 #deletes everything except the longitude and latitude values from the data set (from columns 4 and 5)
@@ -67,8 +68,8 @@ ghdx_trial_ug <- crop(ghdx_infant, e)
 #ensures that all data is in the same coordinate system
 pr_ghdx_trial_ug <- projectRaster(ghdx_trial_ug,crs="+proj=longlat +datum=NAD27")
 
-#from the TIF file, extracts the points related to the TC_2km_2014sub_count
-#gets infant data related to each village (coordinates for each TC_2km_2014sub_count -- 964 villages)
+#from the TIF file, extracts the points related to the TC_3km_2014sub_count
+#gets infant data related to each village (coordinates for each TC_3km_2014sub_count -- 825 villages)
 rast_pr_ghdx_trial_ug <- raster::extract(pr_ghdx_trial_ug, TC_3km_2014sub_count)
 
 #ensures that all data is in the same data frame
@@ -80,7 +81,7 @@ colnames(rast_pr_ghdx_trial_ug) <- c("imr_2000", "imr_2001", "imr_2002", "imr_20
                                      "imr_2010", "imr_2011", "imr_2012", "imr_2013", "imr_2014", 
                                      "imr_2015", "imr_2016", "imr_2017")
 
-#matrix that contains imr for years 2000-2017 for each 964 villages in Uganda
+#matrix that contains imr for years 2000-2017 for each 825 villages in Uganda
 
 
 # this is the website for the nighttime light data. 
@@ -105,7 +106,7 @@ colnames(rast_val_NTL_2003_TC) <- "ntl_2003"
 write.csv(rast_val_NTL_2003_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2003_TC.csv")
 
 # this combines the extracted data to the original data frame
-TC_3km_2014sub_count <- cbind(TC_3km_2014sub, rast_val_NTL_2003_TC)
+raster_TC_3km_2014sub <- cbind(TC_3km_2014sub, rast_val_NTL_2003_TC)
 
 # 2004
 NTL_2004 <- raster("LongNTL_2004.tif")
@@ -119,7 +120,9 @@ colnames(rast_val_NTL_2004_TC) <- "ntl_2004"
 
 write.csv(rast_val_NTL_2004_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2004_TC.csv")
 
-TC_3km_2014sub_count <- cbind(TC_3km_2014sub, rast_val_NTL_2004_TC)
+raster_TC_3km_2014sub <- cbind(raster_TC_3km_2014sub, rast_val_NTL_2004_TC)
+
+
 
 
 # 2005
@@ -128,13 +131,13 @@ ug_NTL_2005 <- crop(NTL_2005, e)
 pr_NTL_2005 <- projectRaster(ug_NTL_2005,crs="+proj=longlat +datum=NAD27")
 plot(pr_NTL_2005)
 
-rast_val_NTL_2005_TC <- raster::extract(pr_NTL_2005, TC_2km_2014sub_count)
+rast_val_NTL_2005_TC <- raster::extract(pr_NTL_2005, TC_3km_2014sub_count)
 rast_val_NTL_2005_TC <- as.data.frame(rast_val_NTL_2005_TC)
 colnames(rast_val_NTL_2005_TC) <- "ntl_2005"
 
 write.csv(rast_val_NTL_2005_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2005_TC.csv")
 
-raster_TC_2km_2014sub <- cbind(raster_TC_2km_2014sub, rast_val_NTL_2005_TC)
+raster_TC_3km_2014sub <- cbind(raster_TC_3km_2014sub, rast_val_NTL_2005_TC)
 
 
 # 2006
@@ -143,13 +146,13 @@ ug_NTL_2006 <- crop(NTL_2006, e)
 pr_NTL_2006 <- projectRaster(ug_NTL_2006,crs="+proj=longlat +datum=NAD27")
 plot(pr_NTL_2006)
 
-rast_val_NTL_2006_TC <- raster::extract(pr_NTL_2006, TC_2km_2014sub_count)
+rast_val_NTL_2006_TC <- raster::extract(pr_NTL_2006, TC_3km_2014sub_count)
 rast_val_NTL_2006_TC <- as.data.frame(rast_val_NTL_2006_TC)
 colnames(rast_val_NTL_2006_TC) <- "ntl_2006"
 
 write.csv(rast_val_NTL_2006_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2006_TC.csv")
 
-raster_TC_2km_2014sub <- cbind(raster_TC_2km_2014sub, rast_val_NTL_2006_TC)
+raster_TC_3km_2014sub <- cbind(raster_TC_3km_2014sub, rast_val_NTL_2006_TC)
 
 
 # 2007
@@ -158,13 +161,13 @@ ug_NTL_2007 <- crop(NTL_2007, e)
 pr_NTL_2007 <- projectRaster(ug_NTL_2007,crs="+proj=longlat +datum=NAD27")
 plot(pr_NTL_2007)
 
-rast_val_NTL_2007_TC <- raster::extract(pr_NTL_2007, TC_2km_2014sub_count)
+rast_val_NTL_2007_TC <- raster::extract(pr_NTL_2007, TC_3km_2014sub_count)
 rast_val_NTL_2007_TC <- as.data.frame(rast_val_NTL_2007_TC)
 colnames(rast_val_NTL_2007_TC) <- "ntl_2007"
 
 write.csv(rast_val_NTL_2007_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2007_TC.csv")
 
-raster_TC_2km_2014sub <- cbind(raster_TC_2km_2014sub, rast_val_NTL_2007_TC)
+raster_TC_3km_2014sub <- cbind(raster_TC_3km_2014sub, rast_val_NTL_2007_TC)
 
 
 # 2008
@@ -173,13 +176,13 @@ ug_NTL_2008 <- crop(NTL_2008, e)
 pr_NTL_2008 <- projectRaster(ug_NTL_2008,crs="+proj=longlat +datum=NAD27")
 plot(pr_NTL_2008)
 
-rast_val_NTL_2008_TC <- raster::extract(pr_NTL_2008, TC_2km_2014sub_count)
+rast_val_NTL_2008_TC <- raster::extract(pr_NTL_2008, TC_3km_2014sub_count)
 rast_val_NTL_2008_TC <- as.data.frame(rast_val_NTL_2008_TC)
 colnames(rast_val_NTL_2008_TC) <- "ntl_2008"
 
 write.csv(rast_val_NTL_2008_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2008_TC.csv")
 
-raster_TC_2km_2014sub <- cbind(raster_TC_2km_2014sub, rast_val_NTL_2008_TC)
+raster_TC_3km_2014sub <- cbind(raster_TC_3km_2014sub, rast_val_NTL_2008_TC)
 
 
 # 2009
@@ -188,13 +191,13 @@ ug_NTL_2009 <- crop(NTL_2009, e)
 pr_NTL_2009 <- projectRaster(ug_NTL_2009,crs="+proj=longlat +datum=NAD27")
 plot(pr_NTL_2009)
 
-rast_val_NTL_2009_TC <- raster::extract(pr_NTL_2009, TC_2km_2014sub_count)
+rast_val_NTL_2009_TC <- raster::extract(pr_NTL_2009, TC_3km_2014sub_count)
 rast_val_NTL_2009_TC <- as.data.frame(rast_val_NTL_2009_TC)
 colnames(rast_val_NTL_2009_TC) <- "ntl_2009"
 
 write.csv(rast_val_NTL_2009_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2009_TC.csv")
 
-raster_TC_2km_2014sub <- cbind(raster_TC_2km_2014sub, rast_val_NTL_2009_TC)
+raster_TC_3km_2014sub <- cbind(raster_TC_3km_2014sub, rast_val_NTL_2009_TC)
 
 
 # 2010
@@ -203,13 +206,13 @@ ug_NTL_2010 <- crop(NTL_2010, e)
 pr_NTL_2010 <- projectRaster(ug_NTL_2010,crs="+proj=longlat +datum=NAD27")
 plot(pr_NTL_2010)
 
-rast_val_NTL_2010_TC <- raster::extract(pr_NTL_2010, TC_2km_2014sub_count)
+rast_val_NTL_2010_TC <- raster::extract(pr_NTL_2010, TC_3km_2014sub_count)
 rast_val_NTL_2010_TC <- as.data.frame(rast_val_NTL_2010_TC)
 colnames(rast_val_NTL_2010_TC) <- "ntl_2010"
 
 write.csv(rast_val_NTL_2010_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2010_TC.csv")
 
-raster_TC_2km_2014sub <- cbind(raster_TC_2km_2014sub, rast_val_NTL_2010_TC)
+raster_TC_3km_2014sub <- cbind(raster_TC_3km_2014sub, rast_val_NTL_2010_TC)
 
 
 # 2011
@@ -218,13 +221,13 @@ ug_NTL_2011 <- crop(NTL_2011, e)
 pr_NTL_2011 <- projectRaster(ug_NTL_2011,crs="+proj=longlat +datum=NAD27")
 plot(pr_NTL_2011)
 
-rast_val_NTL_2011_TC <- raster::extract(pr_NTL_2011, TC_2km_2014sub_count)
+rast_val_NTL_2011_TC <- raster::extract(pr_NTL_2011, TC_3km_2014sub_count)
 rast_val_NTL_2011_TC <- as.data.frame(rast_val_NTL_2011_TC)
 colnames(rast_val_NTL_2011_TC) <- "ntl_2011"
 
 write.csv(rast_val_NTL_2011_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2011_TC.csv")
 
-raster_TC_2km_2014sub <- cbind(raster_TC_2km_2014sub, rast_val_NTL_2011_TC)
+raster_TC_3km_2014sub <- cbind(raster_TC_3km_2014sub, rast_val_NTL_2011_TC)
 
 
 # 2012
@@ -233,13 +236,13 @@ ug_NTL_2012 <- crop(NTL_2012, e)
 pr_NTL_2012 <- projectRaster(ug_NTL_2012,crs="+proj=longlat +datum=NAD27")
 plot(pr_NTL_2012)
 
-rast_val_NTL_2012_TC <- raster::extract(pr_NTL_2012, TC_2km_2014sub_count)
+rast_val_NTL_2012_TC <- raster::extract(pr_NTL_2012, TC_3km_2014sub_count)
 rast_val_NTL_2012_TC <- as.data.frame(rast_val_NTL_2012_TC)
 colnames(rast_val_NTL_2012_TC) <- "ntl_2012"
 
 write.csv(rast_val_NTL_2012_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2012_TC.csv")
 
-raster_TC_2km_2014sub <- cbind(raster_TC_2km_2014sub, rast_val_NTL_2012_TC)
+raster_TC_3km_2014sub <- cbind(raster_TC_3km_2014sub, rast_val_NTL_2012_TC)
 
 
 # 2013
@@ -248,13 +251,13 @@ ug_NTL_2013 <- crop(NTL_2013, e)
 pr_NTL_2013 <- projectRaster(ug_NTL_2013,crs="+proj=longlat +datum=NAD27")
 plot(pr_NTL_2013)
 
-rast_val_NTL_2013_TC <- raster::extract(pr_NTL_2013, TC_2km_2014sub_count)
+rast_val_NTL_2013_TC <- raster::extract(pr_NTL_2013, TC_3km_2014sub_count)
 rast_val_NTL_2013_TC <- as.data.frame(rast_val_NTL_2013_TC)
 colnames(rast_val_NTL_2013_TC) <- "ntl_2013"
 
 write.csv(rast_val_NTL_2013_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2013_TC.csv")
 
-raster_TC_2km_2014sub <- cbind(raster_TC_2km_2014sub, rast_val_NTL_2013_TC)
+raster_TC_3km_2014sub <- cbind(raster_TC_3km_2014sub, rast_val_NTL_2013_TC)
 
 
 # 2014
@@ -263,13 +266,13 @@ ug_NTL_2014 <- crop(NTL_2014, e)
 pr_NTL_2014 <- projectRaster(ug_NTL_2014,crs="+proj=longlat +datum=NAD27")
 plot(pr_NTL_2014)
 
-rast_val_NTL_2014_TC <- raster::extract(pr_NTL_2014, TC_2km_2014sub_count)
+rast_val_NTL_2014_TC <- raster::extract(pr_NTL_2014, TC_3km_2014sub_count)
 rast_val_NTL_2014_TC <- as.data.frame(rast_val_NTL_2014_TC)
 colnames(rast_val_NTL_2014_TC) <- "ntl_2014"
 
 write.csv(rast_val_NTL_2014_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2014_TC.csv")
 
-raster_TC_2km_2014sub <- cbind(raster_TC_2km_2014sub, rast_val_NTL_2014_TC)
+raster_TC_3km_2014sub <- cbind(raster_TC_3km_2014sub, rast_val_NTL_2014_TC)
 
 
 # 2015
@@ -278,13 +281,13 @@ ug_NTL_2015 <- crop(NTL_2015, e)
 pr_NTL_2015 <- projectRaster(ug_NTL_2015,crs="+proj=longlat +datum=NAD27")
 plot(pr_NTL_2015)
 
-rast_val_NTL_2015_TC <- raster::extract(pr_NTL_2015, TC_2km_2014sub_count)
+rast_val_NTL_2015_TC <- raster::extract(pr_NTL_2015, TC_3km_2014sub_count)
 rast_val_NTL_2015_TC <- as.data.frame(rast_val_NTL_2015_TC)
 colnames(rast_val_NTL_2015_TC) <- "ntl_2015"
 
 write.csv(rast_val_NTL_2015_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2015_TC.csv")
 
-raster_TC_2km_2014sub <- cbind(raster_TC_2km_2014sub, rast_val_NTL_2015_TC)
+raster_TC_3km_2014sub <- cbind(raster_TC_3km_2014sub, rast_val_NTL_2015_TC)
 
 
 # 2016
@@ -293,18 +296,18 @@ ug_NTL_2016 <- crop(NTL_2016, e)
 pr_NTL_2016 <- projectRaster(ug_NTL_2016,crs="+proj=longlat +datum=NAD27")
 plot(pr_NTL_2016)
 
-rast_val_NTL_2016_TC <- raster::extract(pr_NTL_2016, TC_2km_2014sub_count)
+rast_val_NTL_2016_TC <- raster::extract(pr_NTL_2016, TC_3km_2014sub_count)
 rast_val_NTL_2016_TC <- as.data.frame(rast_val_NTL_2016_TC)
 colnames(rast_val_NTL_2016_TC) <- "ntl_2016"
 
 write.csv(rast_val_NTL_2016_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2016_TC.csv")
 
-raster_TC_2km_2014sub <- cbind(raster_TC_2km_2014sub, rast_val_NTL_2016_TC)
+raster_TC_3km_2014sub <- cbind(raster_TC_3km_2014sub, rast_val_NTL_2016_TC)
 
 
 
 
 
-raster_TC_2km_2014sub_zeros <- raster_TC_2km_2014sub
+raster_TC_3km_2014sub_zeros <- raster_TC_3km_2014sub
 
-raster_TC_2km_2014sub_zeros[is.na(raster_TC_2km_2014sub_zeros)] <- 0
+raster_TC_3km_2014sub_zeros[is.na(raster_TC_3km_2014sub_zeros)] <- 0
