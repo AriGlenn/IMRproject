@@ -30,11 +30,11 @@ library(MCPanel) #matrix completion
 TC_3km <- read.csv("treat_control_3km.csv") #csv is in the drive
 
 #takes data from all rows w/2014 as a data value under year by View(TC_3km)
-#964 total = 888 control and 76 treated
+#825 total = 735 control and 90 treated
 
 TC_3km_2014sub <- subset(TC_3km, year == "2014")
 
-#creates a matrix with 964 rows, 1 col, filled w/NA
+#creates a matrix with 825 rows, 1 col, filled w/NA
 #number of rows = length of data = number of villages
 numVillages <- 825
 count <- matrix(NA,numVillages,1)
