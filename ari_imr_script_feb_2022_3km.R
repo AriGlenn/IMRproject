@@ -305,6 +305,7 @@ write.csv(rast_val_NTL_2016_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2016_TC.csv"
 raster_TC_3km_2014sub <- cbind(raster_TC_3km_2014sub, rast_val_NTL_2016_TC)
 
 
+#write.csv(raster_TC_3km_2014sub, "raster_TC_3km_2014sub.csv")
 
 
 

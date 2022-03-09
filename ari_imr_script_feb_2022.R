@@ -95,7 +95,7 @@ rast_val_NTL_2003_TC <- as.data.frame(rast_val_NTL_2003_TC)
 colnames(rast_val_NTL_2003_TC) <- "ntl_2003"
 
 # this save the data so we don't have to do the extraction again
-write.csv(rast_val_NTL_2003_TC, "rast_val_NTL_2003_TC.csv")
+write.csv(rast_val_NTL_2003_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2003_TC.csv")
 
 # this combines the extracted data to the original data frame
 raster_TC_2km_2014sub <- cbind(TC_2km_2014sub, rast_val_NTL_2003_TC)
@@ -110,7 +110,7 @@ rast_val_NTL_2004_TC <- raster::extract(pr_NTL_2004, TC_2km_2014sub_count)
 rast_val_NTL_2004_TC <- as.data.frame(rast_val_NTL_2004_TC)
 colnames(rast_val_NTL_2004_TC) <- "ntl_2004"
 
-write.csv(rast_val_NTL_2004_TC, "rast_val_NTL_2004_TC.csv")
+write.csv(rast_val_NTL_2004_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2004_TC.csv")
 
 raster_TC_2km_2014sub <- cbind(raster_TC_2km_2014sub, rast_val_NTL_2004_TC)
 
@@ -125,7 +125,7 @@ rast_val_NTL_2005_TC <- raster::extract(pr_NTL_2005, TC_2km_2014sub_count)
 rast_val_NTL_2005_TC <- as.data.frame(rast_val_NTL_2005_TC)
 colnames(rast_val_NTL_2005_TC) <- "ntl_2005"
 
-write.csv(rast_val_NTL_2005_TC, "rast_val_NTL_2005_TC.csv")
+write.csv(rast_val_NTL_2005_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2005_TC.csv")
 
 raster_TC_2km_2014sub <- cbind(raster_TC_2km_2014sub, rast_val_NTL_2005_TC)
 
@@ -140,7 +140,7 @@ rast_val_NTL_2006_TC <- raster::extract(pr_NTL_2006, TC_2km_2014sub_count)
 rast_val_NTL_2006_TC <- as.data.frame(rast_val_NTL_2006_TC)
 colnames(rast_val_NTL_2006_TC) <- "ntl_2006"
 
-write.csv(rast_val_NTL_2006_TC, "rast_val_NTL_2006_TC.csv")
+write.csv(rast_val_NTL_2006_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2006_TC.csv")
 
 raster_TC_2km_2014sub <- cbind(raster_TC_2km_2014sub, rast_val_NTL_2006_TC)
 
@@ -155,7 +155,7 @@ rast_val_NTL_2007_TC <- raster::extract(pr_NTL_2007, TC_2km_2014sub_count)
 rast_val_NTL_2007_TC <- as.data.frame(rast_val_NTL_2007_TC)
 colnames(rast_val_NTL_2007_TC) <- "ntl_2007"
 
-write.csv(rast_val_NTL_2007_TC, "rast_val_NTL_2007_TC.csv")
+write.csv(rast_val_NTL_2007_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2007_TC.csv")
 
 raster_TC_2km_2014sub <- cbind(raster_TC_2km_2014sub, rast_val_NTL_2007_TC)
 
@@ -170,7 +170,7 @@ rast_val_NTL_2008_TC <- raster::extract(pr_NTL_2008, TC_2km_2014sub_count)
 rast_val_NTL_2008_TC <- as.data.frame(rast_val_NTL_2008_TC)
 colnames(rast_val_NTL_2008_TC) <- "ntl_2008"
 
-write.csv(rast_val_NTL_2008_TC, "rast_val_NTL_2008_TC.csv")
+write.csv(rast_val_NTL_2008_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2008_TC.csv")
 
 raster_TC_2km_2014sub <- cbind(raster_TC_2km_2014sub, rast_val_NTL_2008_TC)
 
@@ -185,7 +185,7 @@ rast_val_NTL_2009_TC <- raster::extract(pr_NTL_2009, TC_2km_2014sub_count)
 rast_val_NTL_2009_TC <- as.data.frame(rast_val_NTL_2009_TC)
 colnames(rast_val_NTL_2009_TC) <- "ntl_2009"
 
-write.csv(rast_val_NTL_2009_TC, "rast_val_NTL_2009_TC.csv")
+write.csv(rast_val_NTL_2009_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2009_TC.csv")
 
 raster_TC_2km_2014sub <- cbind(raster_TC_2km_2014sub, rast_val_NTL_2009_TC)
 
@@ -200,7 +200,7 @@ rast_val_NTL_2010_TC <- raster::extract(pr_NTL_2010, TC_2km_2014sub_count)
 rast_val_NTL_2010_TC <- as.data.frame(rast_val_NTL_2010_TC)
 colnames(rast_val_NTL_2010_TC) <- "ntl_2010"
 
-write.csv(rast_val_NTL_2010_TC, "rast_val_NTL_2010_TC.csv")
+write.csv(rast_val_NTL_2010_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2010_TC.csv")
 
 raster_TC_2km_2014sub <- cbind(raster_TC_2km_2014sub, rast_val_NTL_2010_TC)
 
@@ -215,7 +215,7 @@ rast_val_NTL_2011_TC <- raster::extract(pr_NTL_2011, TC_2km_2014sub_count)
 rast_val_NTL_2011_TC <- as.data.frame(rast_val_NTL_2011_TC)
 colnames(rast_val_NTL_2011_TC) <- "ntl_2011"
 
-write.csv(rast_val_NTL_2011_TC, "rast_val_NTL_2011_TC.csv")
+write.csv(rast_val_NTL_2011_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2011_TC.csv")
 
 raster_TC_2km_2014sub <- cbind(raster_TC_2km_2014sub, rast_val_NTL_2011_TC)
 
@@ -230,7 +230,7 @@ rast_val_NTL_2012_TC <- raster::extract(pr_NTL_2012, TC_2km_2014sub_count)
 rast_val_NTL_2012_TC <- as.data.frame(rast_val_NTL_2012_TC)
 colnames(rast_val_NTL_2012_TC) <- "ntl_2012"
 
-write.csv(rast_val_NTL_2012_TC, "rast_val_NTL_2012_TC.csv")
+write.csv(rast_val_NTL_2012_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2012_TC.csv")
 
 raster_TC_2km_2014sub <- cbind(raster_TC_2km_2014sub, rast_val_NTL_2012_TC)
 
@@ -245,7 +245,7 @@ rast_val_NTL_2013_TC <- raster::extract(pr_NTL_2013, TC_2km_2014sub_count)
 rast_val_NTL_2013_TC <- as.data.frame(rast_val_NTL_2013_TC)
 colnames(rast_val_NTL_2013_TC) <- "ntl_2013"
 
-write.csv(rast_val_NTL_2013_TC, "rast_val_NTL_2013_TC.csv")
+write.csv(rast_val_NTL_2013_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2013_TC.csv")
 
 raster_TC_2km_2014sub <- cbind(raster_TC_2km_2014sub, rast_val_NTL_2013_TC)
 
@@ -260,7 +260,7 @@ rast_val_NTL_2014_TC <- raster::extract(pr_NTL_2014, TC_2km_2014sub_count)
 rast_val_NTL_2014_TC <- as.data.frame(rast_val_NTL_2014_TC)
 colnames(rast_val_NTL_2014_TC) <- "ntl_2014"
 
-write.csv(rast_val_NTL_2014_TC, "rast_val_NTL_2014_TC.csv")
+write.csv(rast_val_NTL_2014_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2014_TC.csv")
 
 raster_TC_2km_2014sub <- cbind(raster_TC_2km_2014sub, rast_val_NTL_2014_TC)
 
@@ -275,7 +275,7 @@ rast_val_NTL_2015_TC <- raster::extract(pr_NTL_2015, TC_2km_2014sub_count)
 rast_val_NTL_2015_TC <- as.data.frame(rast_val_NTL_2015_TC)
 colnames(rast_val_NTL_2015_TC) <- "ntl_2015"
 
-write.csv(rast_val_NTL_2015_TC, "rast_val_NTL_2015_TC.csv")
+write.csv(rast_val_NTL_2015_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2015_TC.csv")
 
 raster_TC_2km_2014sub <- cbind(raster_TC_2km_2014sub, rast_val_NTL_2015_TC)
 
@@ -290,9 +290,13 @@ rast_val_NTL_2016_TC <- raster::extract(pr_NTL_2016, TC_2km_2014sub_count)
 rast_val_NTL_2016_TC <- as.data.frame(rast_val_NTL_2016_TC)
 colnames(rast_val_NTL_2016_TC) <- "ntl_2016"
 
-write.csv(rast_val_NTL_2016_TC, "rast_val_NTL_2016_TC.csv")
+write.csv(rast_val_NTL_2016_TC, "rast_val_NTL_csvFiles/rast_val_NTL_2016_TC.csv")
 
 raster_TC_2km_2014sub <- cbind(raster_TC_2km_2014sub, rast_val_NTL_2016_TC)
+
+
+#write.csv(raster_TC_2km_2014sub, "raster_TC_2km_2014sub.csv")
+
 
 raster_TC_2km_2014sub_zeros <- raster_TC_2km_2014sub
 
